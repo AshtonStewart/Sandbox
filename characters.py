@@ -44,5 +44,7 @@ class Characters:
 
         return damage
 
-    def defense_raise(self):
-        self.defense += (self.defense * 1.5)
+    # def defense_raise(self):
+    #     self.defense += (self.defense * 0.25)
+    #
+    #     return f"{self.name} defense increased to {self.defense}"

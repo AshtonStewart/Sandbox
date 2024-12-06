@@ -13,7 +13,7 @@ class Heroes(Characters):
 
 
     def __str__(self):
-        return f"{super().__str__()} and the special abilities {self.ability1} and {self.ability2}!"
+        return f"{super().__str__()} and the special abilities: {self.ability1} and {self.ability2}!"
 
 
 
