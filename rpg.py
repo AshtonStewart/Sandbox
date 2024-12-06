@@ -7,32 +7,44 @@ from characters import Characters
 from monsters import Monster
 from heros import Heroes
 
-Slime = Monster("slime", 100, 10, 20, "goopy")
+PINK_SLIME = Monster("Pink Slime", 200, 10, 20, "goopy")
 
-knight = Heroes("Knight", 200, 100, 250, "Big punch")
+KNIGHT = Heroes("Knight", 200, 80, 250, "Big punch", "Defend")
 
 
 def main():
-    while Slime.hp > 0 and knight.hp > 0:
+    characters = [PINK_SLIME, KNIGHT]
+
+    HERO = KNIGHT
+    MONSTER = PINK_SLIME
+
+    while MONSTER.hp > 0 and HERO.hp > 0:
         player_turn = True
         while player_turn == True:
             print("You are fighting a slime. What do you want to do?")
-            move = input("F for fight. ")
+            print("F to fight. \nD to defend.")
+            move = input("What do you do? ")
             if move.upper() == "F":
-                # attacker = input("Choose the character to attack: ").lower()
-                # defending = input("Choose who they're attacking: ").lower()
+                attack(HERO, MONSTER)
+                player_turn = False
+            if move.upper() == "D":
+                HERO.defense_raise()
+                player_turn = False
 
-                attacker = knight
-                defending = "slime"
-                attack(attacker, defending)
-        # function enemy_attack
+        for character in characters:
+            if character.hp <= 0:
+                print(f"{character.name} is defeated.")
+
+        attack(MONSTER, HERO)
 
 
 def attack(attacker, defending):
     """Has a monster attack a person"""
-    print(f"{attacker.name} is attacking the {defending}.")
     damage = attacker.calc_damage()
-    print(damage)
+    defending.take_damage(damage)
+
+    print(f"{attacker.name} is attacking the {defending.name}.")
+    print(f"{defending.name} now has {defending.hp} hp")
 
 
 main()
