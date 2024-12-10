@@ -12,3 +12,4 @@ class Monster(Characters):
     def __str__(self):
         return f"{super().__str__()} and the special ability: {self.ability}!"
 
+
